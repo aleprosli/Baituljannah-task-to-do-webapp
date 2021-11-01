@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodolistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//crud todo
+Route::get('/todo', [TodolistController::class, 'index'])->name('todolist:index');
+Route::get('/todo/create', [TodolistController::class, 'create'])->name('todolist:create');
+Route::get('/todo/edit/{todolist}', [TodolistController::class, 'edit'])->name('todolist:edit');
+Route::post('/todo/store', [TodolistController::class, 'store'])->name('todolist:store');
+Route::post('/todo/edit/{todolist}', [TodolistController::class, 'update'])->name('todolist:update');
+Route::get('/todo/delete/{todolist}', [TodolistController::class, 'destroy'])->name('todolist:delete');
+
+
+
