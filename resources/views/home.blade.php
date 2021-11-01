@@ -17,6 +17,16 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-header">{{ __('Task') }}</div>
+
+                <div class="card-body">
+                    <a href="{{ route('todolist:index') }}" class="btn btn-secondary">View Task</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

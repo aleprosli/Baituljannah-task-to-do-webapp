@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todolist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodolistController extends Controller
 {
@@ -14,7 +15,8 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        //
+        $todolists = Auth::user()->todolists;
+        return view('todolist.index',compact('todolists'));
     }
 
     /**
@@ -24,7 +26,7 @@ class TodolistController extends Controller
      */
     public function create()
     {
-        //
+        return view('todolist.create');
     }
 
     /**
@@ -35,7 +37,23 @@ class TodolistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:5',
+            'description' => 'required|min:10',
+        ]);
+
+        //store using model 
+        $todolist = new Todolist();
+        $todolist->user_id = auth()->user()->id;
+        $todolist->title = $request->title;
+        $todolist->description = $request->description;
+        $todolist->date = $request->date;
+        $todolist->save();
+
+        return redirect()->route('todolist:index')->with([
+            'alert-type' => 'alert-success',
+            'alert-message' => 'New task has been add!'
+        ]);
     }
 
     /**
@@ -57,7 +75,7 @@ class TodolistController extends Controller
      */
     public function edit(Todolist $todolist)
     {
-        //
+        return view('todolist.edit',compact('todolist'));
     }
 
     /**
@@ -69,7 +87,20 @@ class TodolistController extends Controller
      */
     public function update(Request $request, Todolist $todolist)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:5',
+            'description' => 'required|min:10',
+        ]);
+        
+        $todolist->title = $request->title;
+        $todolist->description = $request->description;
+        $todolist->date = $request->date;
+        $todolist->save();
+
+        return redirect()->route('todolist:index')->with([
+            'alert-type' => 'alert-success',
+            'alert-message' => 'Your task has been updated!'
+        ]);
     }
 
     /**
@@ -80,6 +111,11 @@ class TodolistController extends Controller
      */
     public function destroy(Todolist $todolist)
     {
-        //
+        $todolist->delete();
+
+        return redirect()->route('todolist:index')->with([
+            'alert-type' => 'alert-danger',
+            'alert-message' => 'Task has been delete!'
+        ]);
     }
 }
