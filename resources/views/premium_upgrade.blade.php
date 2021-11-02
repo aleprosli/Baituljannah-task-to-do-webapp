@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Premium account upgrade') }}</div>
 
                 <div class="card-body">
-                    <a href="#" class="btn btn-secondary">Upgrade account</a>
+                    <a href="{{ route('upgrade:update') }}" class="btn btn-secondary">Upgrade account</a>
                 </div>
             </div>
         </div>

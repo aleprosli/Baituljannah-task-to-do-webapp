@@ -23,7 +23,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_premium');
 
 //upgrade account
-Route::get('/premium/upgrade', [App\Http\Controllers\UpgradeController::class, 'upgrade'])->name('upgrade:index');
+Route::get('/premium/index', [App\Http\Controllers\UpgradeController::class, 'upgrade'])->name('upgrade:index');
+Route::get('/premium/upgrade', [App\Http\Controllers\UpgradeController::class, 'upgradeIsPremium'])->name('upgrade:update');
+
 
 //crud todo
 Route::get('/todo', [TodolistController::class, 'index'])->name('todolist:index');
