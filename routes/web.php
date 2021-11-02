@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\UpgradeController;
 use App\Http\Controllers\TodolistController;
 
 /*
@@ -20,11 +23,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_premium');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('is_premium');
 
 //upgrade account
-Route::get('/premium/index', [App\Http\Controllers\UpgradeController::class, 'upgrade'])->name('upgrade:index');
-Route::get('/premium/upgrade', [App\Http\Controllers\UpgradeController::class, 'upgradeIsPremium'])->name('upgrade:update');
+Route::get('/premium/index', [UpgradeController::class, 'upgrade'])->name('upgrade:index');
+Route::get('/premium/upgrade', [UpgradeController::class, 'upgradeIsPremium'])->name('upgrade:update');
 
 //crud todo
 Route::get('/todo', [TodolistController::class, 'index'])->name('todolist:index');
@@ -36,6 +39,9 @@ Route::get('/todo/delete/{todolist}', [TodolistController::class, 'destroy'])->n
 
 //notify reminder
 Route::get('/reminder/{todolist}', [TodolistController::class, 'reminder'])->name('todolist:reminder');
+
+//audit route
+Route::get('/audit/log', [AuditController::class, 'index'])->name('audit:index');
 
 
 
