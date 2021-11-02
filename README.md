@@ -1,3 +1,36 @@
+# Task
+To-Do Web App
+
+- Login
+    - Username/Email
+    - Validation
+- Register
+    - Name, Email, Phone, Password
+    - Validation
+- User type
+    - Free: limit create 5 To Do only
+    - Premium: unlimited create To Do
+- To Do Item
+    - Title
+    - Description
+    - Date
+    - Toggle set reminder
+- Page
+    - Display To Do List
+    - Create To Do
+    - Edit/Delete To Do
+- Middleware
+    - When create To Do, block free user from create  when reach limit and redirect to page Upgrade
+- Queue (Job)
+    - Send reminder to email based on To Do date (if set)
+- Event and Listener
+    - Each To Do activity, add to log (similar like audit trail log)
+- API
+    - Login
+    - Register
+    - Display To Do
+    - Create/Edit/Delete
+
 # How to setup
 
 ## Step 1 : Install Laragon
