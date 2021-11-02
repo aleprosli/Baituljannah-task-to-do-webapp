@@ -7,9 +7,16 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h3>To-do List</h3>
+                        @if(auth()->user()->is_premium == 1 || (auth()->user()->is_premium == 0 && auth()->user()->todolists->count() < 5))
                             <div class="input-group">
                                 <a href="{{ route('todolist:create') }}" type="button" class="btn btn-info">Add task</a>
                             </div>
+                            @else
+                            <p> Your free account has reached limit </p>
+                            <div class="input-group">
+                                <a href="{{ route('upgrade:index') }}" type="button" class="btn btn-info">Please upgrade account</a>
+                            </div>
+                            @endif
 
                             @if (count($todolists))
                                 <ul class="list-group list-group-flush mt-3">
@@ -46,6 +53,7 @@
                             @else
                             <p class="text-center mt-3">No Tasks!</p>
                             @endif
+                        
                     </div>
                     <div class="card-footer">
                         You have {{ count($todolists) }} pending tasks

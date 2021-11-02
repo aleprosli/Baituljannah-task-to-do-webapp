@@ -20,7 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_premium');
+
+//upgrade account
+Route::get('/premium/upgrade', [App\Http\Controllers\UpgradeController::class, 'upgrade'])->name('upgrade:index');
 
 //crud todo
 Route::get('/todo', [TodolistController::class, 'index'])->name('todolist:index');
