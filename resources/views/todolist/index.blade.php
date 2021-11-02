@@ -7,6 +7,11 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h3>To-do List</h3>
+                        @if(session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         @if(auth()->user()->is_premium == 1 || (auth()->user()->is_premium == 0 && auth()->user()->todolists->count() < 5))
                             <div class="input-group">
                                 <a href="{{ route('todolist:create') }}" type="button" class="btn btn-info">Add task</a>
