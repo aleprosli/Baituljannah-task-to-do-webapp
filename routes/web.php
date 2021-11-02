@@ -26,7 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/premium/index', [App\Http\Controllers\UpgradeController::class, 'upgrade'])->name('upgrade:index');
 Route::get('/premium/upgrade', [App\Http\Controllers\UpgradeController::class, 'upgradeIsPremium'])->name('upgrade:update');
 
-
 //crud todo
 Route::get('/todo', [TodolistController::class, 'index'])->name('todolist:index');
 Route::get('/todo/create', [TodolistController::class, 'create'])->name('todolist:create');
@@ -34,6 +33,10 @@ Route::get('/todo/edit/{todolist}', [TodolistController::class, 'edit'])->name('
 Route::post('/todo/store', [TodolistController::class, 'store'])->name('todolist:store');
 Route::post('/todo/edit/{todolist}', [TodolistController::class, 'update'])->name('todolist:update');
 Route::get('/todo/delete/{todolist}', [TodolistController::class, 'destroy'])->name('todolist:delete');
+
+//notify reminder
+Route::get('/reminder/{todolist}', [TodolistController::class, 'reminder'])->name('todolist:reminder');
+
 
 
 

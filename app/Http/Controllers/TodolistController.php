@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todolist;
+use App\Jobs\ReminderJob;
+use App\Mail\ReminderMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -117,5 +119,12 @@ class TodolistController extends Controller
             'alert-type' => 'alert-danger',
             'alert-message' => 'Task has been delete!'
         ]);
+    }
+
+    public function reminder(Todolist $todolist)
+    {
+        $this->dispatch(new ReminderJob($todolist));
+
+        return redirect()->route('todolist:index');
     }
 }

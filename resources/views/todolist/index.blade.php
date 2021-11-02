@@ -44,7 +44,8 @@
                                                     <td>{{ $todolist->title ?? null }}</td>
                                                     <td>{{ $todolist->description ?? null }}</td>
                                                     <td>{{ $todolist->date ?? null }}</td>
-                                                    <td>toogle</td>
+                                                    <td><a onclick="return confirm('Are you sure to set reminder?')" href="{{ route('todolist:reminder',$todolist) }}" class="btn btn-danger">Reminder</a>
+                                                    </td>
                                                     <td>
                                                     <a href="{{ route('todolist:edit',$todolist) }}" class="btn btn-warning">Edit</a>
                                                     <a onclick="return confirm('Are you sure?')" href="{{ route('todolist:delete',$todolist) }}" class="btn btn-danger">Delete</a>
