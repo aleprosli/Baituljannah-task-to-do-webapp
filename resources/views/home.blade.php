@@ -27,6 +27,16 @@
                     <a href="{{ route('todolist:index') }}" class="btn btn-secondary">View Task</a>
                 </div>
             </div>
+
+            <br>
+            
+            <div class="card">
+                <div class="card-header">{{ __('Audit Log') }}</div>
+
+                <div class="card-body">
+                    <a href="{{ route('audit:index') }}" class="btn btn-secondary">View Log</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

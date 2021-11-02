@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Auditable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use \OwenIt\Auditing\Auditable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -47,4 +51,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Todolist::class);
     }
+    
 }
