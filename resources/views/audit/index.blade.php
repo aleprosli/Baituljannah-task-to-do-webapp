@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Audit Log') }}</div>
 
                 <div class="card-body">
-                    {{ $all }}
+                    {{ $all ?? null}}
                     {{-- <p>{{ $all->user_id }}</p> --}}
                     {{-- <p>{{ $all->event }}</p> --}}
                     {{-- <p>{{ $all->old_values }}</p> --}}

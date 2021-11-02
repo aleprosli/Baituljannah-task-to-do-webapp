@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -26,6 +26,8 @@ class User extends Authenticatable implements Auditable
         'email',
         'password',
         'is_premium',
+        'api_token',
+
     ];
 
     /**
