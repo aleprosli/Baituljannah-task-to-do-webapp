@@ -47,9 +47,11 @@ To-Do Web App
 ## Step 8 : 
 `cp .env.example .env`
 ## Step 9 : 
-`php artisan migrate`
-## Step 10 : 
 `php artisan key:generate`
+## Step 10 : 
+`php artisan passport:install`
+## Step 9 : 
+`php artisan migrate` 
 ## Step 11 : 
 `php artisan serve`
 
