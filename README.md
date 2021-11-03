@@ -54,4 +54,9 @@ To-Do Web App
 `php artisan migrate` 
 ## Step 11 : 
 `php artisan serve`
+## Step 12 : 
+`Run queue: php artisan queue:work `
+## Step 12.5 : 
+`To retry requeue : php artisan queue:retry --queue=name`
+
 
